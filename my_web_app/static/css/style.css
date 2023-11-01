@@ -7,8 +7,8 @@
 
 /* Style the logo and navigation */
 .logo, .navigation {
-    text-align: center;
-    padding: 20px;
+    text-align: left;
+    padding: 5px;
 }
 
 /* Style the navigation links */
