@@ -1,3 +1,8 @@
+on:
+  # Runs on pushes targeting the default branch
+  push:
+    branches: ["main"]
+
 remote_theme: pages-themes/minimal@v0.2.0
 
 plugins:
