@@ -1,0 +1,9 @@
+name: YKinebas Repos
+
+remote_theme: pages-themes/minimal@v0.2.0
+
+plugins:
+- jekyll-remote-theme
+
+title: SubBot
+description: Slack Bot Info and Documentation
