@@ -1,0 +1,34 @@
+---
+---
+
+@import "{{ site.theme }}";
+
+/* Define the color scheme */
+:root {
+    --dominant-color: #0F0F31;
+    --secondary-color: #9A57D8;
+    --text-color: #FFFEFF;
+}
+
+/* Style the logo and navigation */
+.logo, .navigation {
+    text-align: left;
+    padding: 5px;
+}
+
+/* Style the navigation links */
+.navigation a {
+    margin: 0 10px;
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+/* Style the main content */
+.main-content {
+    color: var(--text-color);
+    background-color: var(--dominant-color);
+    padding: 20px;
+}
