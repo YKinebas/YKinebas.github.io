@@ -1,4 +1,3 @@
-<script>
 document.getElementById('slackForm').onsubmit = function(event) {
   event.preventDefault(); // Prevent the default form submission
 
@@ -21,4 +20,3 @@ document.getElementById('slackForm').onsubmit = function(event) {
     // Handle errors here
   });
 };
-</script>
