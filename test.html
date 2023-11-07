@@ -19,45 +19,17 @@ title: Home
         <form id="slackForm" onsubmit="handleSlackFormSubmit(event)">
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" required placeholder="Enter your email">
-            <a href="https://slack.com/oauth/v2/authorize?client_id=5588568432231.5603007022787&scope=app_mentions:read,channels:history,channels:read,chat:write,users:read,groups:history&user_scope=users.profile:read" disabled><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+            <button href="https://slack.com/oauth/v2/authorize?client_id=5588568432231.5603007022787&scope=app_mentions:read,channels:history,channels:read,chat:write,users:read,groups:history&user_scope=users.profile:read" id= 'addToSlack' disabled><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
         </form>
-    
         <script>
-        function handleSlackFormSubmit(event) {
-            event.preventDefault(); // Prevent default form submission
-    
-            var emailInput = document.getElementById('email');
-            if (emailInput.checkValidity()) { // If the email is valid, handle the email saving and Slack redirect
-                // AJAX request to save the email or your own implementation to handle email capture
-                fetch('path_to_your_server_side_script', {
-                    method: 'POST',
-                    body: new FormData(document.getElementById('slackForm')),
-                })
-                .then(response => {
-                    if (response.ok) {
-                        // If email saved successfully, redirect to Slack authorization
-                        window.location.href = "https://slack.com/oauth/v2/authorize?client_id=5588568432231.5603007022787&scope=app_mentions:read,channels:history,channels:read,chat:write,users:read,groups:history&user_scope=users.profile:read";
-                    } else {
-                        throw new Error('Email submission failed');
-                    }
-                })
-                .catch(error => {
-                    console.error('Email saving error:', error);
-                });
-            } else {
-                // If the email is not valid, let the form submission fail, this should not occur due to 'required' attribute
-            }
-        }
-    
         document.addEventListener("DOMContentLoaded", function() {
             var emailInput = document.getElementById('email');
             var submitButton = document.getElementById('addToSlack');
-    
+          
             emailInput.addEventListener('input', function() {
-                // Enable the 'Add to Slack' button if the email field is valid
-                submitButton.disabled = !emailInput.checkValidity();
+              submitButton.disabled = !emailInput.checkValidity();
             });
-        });
+          });
         </script>
     </div>
 </body>
