@@ -1,0 +1,62 @@
+---
+layout: default
+title: Home
+---
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Testing</title>
+    <link rel="shortcut icon" type="image/x-icon" href="https://ykinebas.github.io/assets/css/img/favicon.ico" />
+    <meta name="keywords" content="Slack, GPT plugin, Slack digest, Slack bot, AI bot">
+</head>
+<body>
+    <div class="navigation">
+        <a href=https://ykinebas.github.io/index.html>Home</a>
+        <a href=https://ykinebas.github.io/legal.html>Legal</a>
+    </div>
+    <div class="main-content">
+        <h1>TESTING</h1>
+        <form id="slackForm" action="path_to_your_server_side_script" method="POST">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required placeholder="Enter your email">
+            <input type="submit" id="addToSlack" value="Add to Slack" disabled>
+        </form>
+        <h2>Install Sumbot (BETA)</h2>
+        <a href="https://slack.com/oauth/v2/authorize?client_id=5588568432231.5603007022787&scope=app_mentions:read,channels:history,channels:read,chat:write,users:read,groups:history&user_scope=users.profile:read"><img alt="Add to Slack" height="40" width="139" src="https://platform.slack-edge.com/img/add_to_slack.png" srcSet="https://platform.slack-edge.com/img/add_to_slack.png 1x, https://platform.slack-edge.com/img/add_to_slack@2x.png 2x" /></a>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+              var emailInput = document.getElementById('email');
+              var submitButton = document.getElementById('addToSlack');
+            
+              emailInput.addEventListener('input', function() {
+                submitButton.disabled = !emailInput.checkValidity();
+              });
+            });
+        </script>
+    <script>
+        document.getElementById('slackForm').onsubmit = function(event) {
+          event.preventDefault(); // Prevent the default form submission
+        
+          fetch('https://q9hdh8nt26.execute-api.eu-north-1.amazonaws.com/default/SaveEmail', {
+            method: 'POST',
+            body: new FormData(event.target), // sends the form data
+          })
+          .then(response => {
+            if(response.ok) {
+              return response.json(); // or text if your endpoint returns plain text
+            }
+            throw new Error('Network response was not ok.');
+          })
+          .then(data => {
+            console.log('Email saved:', data);
+            // Handle success, maybe display a thank-you message or redirect
+          })
+          .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+            // Handle errors here
+          });
+        };
+        </script>
+    </div>
+</body>
+</html>
